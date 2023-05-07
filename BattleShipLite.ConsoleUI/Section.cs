@@ -24,8 +24,10 @@ namespace BattleShipLite.ConsoleUI
             return (activePlayer, opponent, winner);
         }
 
-        public static void Core(PlayerInfoModel activePlayer, PlayerInfoModel opponent, PlayerInfoModel winner)
+        public static PlayerInfoModel Core(PlayerInfoModel activePlayer, PlayerInfoModel opponent, PlayerInfoModel winner)
         {
+            PlayerInfoModel output = null;
+
             do
             {
                 Part.DisplayShotGrid(activePlayer);
@@ -39,10 +41,12 @@ namespace BattleShipLite.ConsoleUI
                 }
                 else
                 {
-                    winner = activePlayer;
+                    output = activePlayer;
                 }
 
-            } while (winner == null);
+            } while (output == null);
+
+            return output;
         }
 
         public static void End(PlayerInfoModel winner)
