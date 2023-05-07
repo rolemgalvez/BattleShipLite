@@ -138,5 +138,11 @@ namespace BattleShipLite.ConsoleUI
 
             return output;
         }
+
+        public static void IdentifyWinner(PlayerInfoModel winner)
+        {
+            Console.WriteLine($"Congratulations to {winner.UsersName} for winning!");
+            Console.WriteLine($"{winner.UsersName} took {MainLogic.GetShotCount(winner)} shots.");
+        }
     }
 }

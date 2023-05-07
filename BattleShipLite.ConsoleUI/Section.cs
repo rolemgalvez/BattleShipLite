@@ -47,7 +47,11 @@ namespace BattleShipLite.ConsoleUI
 
         public static void End(PlayerInfoModel winner)
         {
-            throw new NotImplementedException();
+            Part.IdentifyWinner(winner);
+
+            Console.WriteLine();
+            Console.WriteLine("Game over.");
+            Console.ReadLine();
         }
     }
 }

@@ -200,5 +200,20 @@ namespace BattleShipLite.BLL
 
             return output;
         }
+
+        public static int GetShotCount(PlayerInfoModel player)
+        {
+            int output = 0;
+
+            foreach (var shot in player.ShotGrid)
+            {
+                if (shot.Status != GridSpotStatus.Empty)
+                {
+                    output += 1;
+                }
+            }
+
+            return output;
+        }
     }
 }
