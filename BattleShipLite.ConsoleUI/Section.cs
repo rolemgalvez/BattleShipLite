@@ -1,4 +1,6 @@
-﻿using BattleShipLite.BLL.Models;
+﻿using BattleShipLite.BLL;
+using BattleShipLite.BLL.Models;
+using System;
 using System.ComponentModel;
 using System.Reflection;
 
@@ -22,12 +24,28 @@ namespace BattleShipLite.ConsoleUI
             return (activePlayer, opponent, winner);
         }
 
-        internal static void Core(PlayerInfoModel activePlayer, PlayerInfoModel opponent, PlayerInfoModel winner)
+        public static void Core(PlayerInfoModel activePlayer, PlayerInfoModel opponent, PlayerInfoModel winner)
         {
-            throw new NotImplementedException();
+            do
+            {
+                Part.DisplayShotGrid(activePlayer);
+                Part.RecordPlayerShot(activePlayer, opponent);
+
+                bool continueGame = MainLogic.PlayerStillActive(opponent);
+
+                if (continueGame)
+                {
+                    (activePlayer, opponent) = (opponent, activePlayer);
+                }
+                else
+                {
+                    winner = activePlayer;
+                }
+
+            } while (winner == null);
         }
 
-        internal static void End(PlayerInfoModel winner)
+        public static void End(PlayerInfoModel winner)
         {
             throw new NotImplementedException();
         }
